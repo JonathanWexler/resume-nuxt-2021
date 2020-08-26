@@ -1,0 +1,28 @@
+{
+  "name": "resume_nuxt_2020",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-brands-svg-icons": "^5.14.0",
+    "@fortawesome/free-regular-svg-icons": "^5.14.0",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/vue-fontawesome": "^0.1.10",
+    "bootstrap": "^4.5.0",
+    "bootstrap-vue": "^2.15.0",
+    "frappe-charts": "^1.5.2",
+    "nuxt": "^2.14.0",
+    "vue-lazyload": "^1.3.3",
+    "vue2-frappe": "^1.2.3"
+  },
+  "devDependencies": {
+    "node-sass": "^4.14.1",
+    "sass-loader": "^9.0.3"
+  }
+}
