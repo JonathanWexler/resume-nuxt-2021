@@ -10,9 +10,9 @@ export default {
   ** See https://nuxtjs.org/api/configuration-target
   */
   target: 'static',
-  // router: {
-  //   base: '/<repository-name>/'
-  // },
+  router: {
+    base: '/wexler-site-2020/'
+  },
   /*
   ** Headers of the page
   ** See https://nuxtjs.org/api/configuration-head
