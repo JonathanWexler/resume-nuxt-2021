@@ -11,7 +11,7 @@ export default {
   */
   target: 'static',
   router: {
-    base: '/wexler-site-2020/'
+    base: '/resume-2020/'
   },
   /*
   ** Headers of the page

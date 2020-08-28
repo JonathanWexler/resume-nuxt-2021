@@ -7,7 +7,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
@@ -23,6 +23,7 @@
     "vue2-frappe": "^1.2.3"
   },
   "devDependencies": {
+    "gh-pages": "^3.1.0",
     "node-sass": "^4.14.1",
     "push-dir": "^0.4.1",
     "sass-loader": "^9.0.3"
