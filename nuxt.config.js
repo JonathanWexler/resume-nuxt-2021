@@ -11,7 +11,7 @@ export default {
   */
   target: 'static',
   router: {
-    base: '/resume-2020/'
+    base: '/sample-resume/'
   },
   /*
   ** Headers of the page
