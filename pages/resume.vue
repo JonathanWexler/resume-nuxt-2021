@@ -5,21 +5,24 @@
     >
       <b-form-input v-model="query" placeholder="Search the resume..."></b-form-input>
       <b-row class="resume">
-          <b-col :cols="experienceCol" class="experience-section" v-if="!this.collapseSection.experience">
+          <b-col sm="12" :md="experienceCol" class="experience-section" v-if="!this.collapseSection.experience">
             <font-awesome-icon class="expand" :icon="expandIcon" @click="toggleSection('experience')"/>
             <h1>Experience</h1>
             <section class="experiences">
               <b-card class="experience" v-for="experience in filteredExperiences" :key="experience.title">
                 <div class="header">
                   <span class="company">{{ experience.company }}</span>
-                  <span class="year">{{ `${experience.startDate} - ${experience.endDate || 'present'}` }}</span>
+                  <b-button variant="outline-primary" @click="filterYears(experience)" class="border-0">
+                    <span class="year">{{ `${experience.startDate} - ${experience.endDate || 'Present'}` }}</span>
+                  </b-button>
                 </div>
                 <div class="role">
                   {{ experience.role }}
                 </div>
                 <ul class="bullets">
                   <li class="bullet" :class="{ highlight: highlightedText(bullet.text)}" v-for="bullet in experience.bullets" :key="bullet.text">
-                    {{ bullet.text }}
+                    <font-awesome-icon class="bullet-icon" size="xs" icon="dot-circle" fill="blue" />
+                    <p class="bullet-text">{{ bullet.text }}</p>
                   </li>
                 </ul>
                 <section class="tags">
@@ -35,9 +38,7 @@
               </b-card>
             </section>
           </b-col>
-          <b-col :cols="skillsCol" id="skills" class="skills-section" v-if="!this.collapseSection.skills">
-            <!-- <b-button v-b-toggle.skills>
-            </b-button> -->
+          <b-col sm="12" :md="skillsCol" id="skills" class="skills-section" v-if="!this.collapseSection.skills">
             <font-awesome-icon class="expand" :icon="expandIcon" @click="toggleSection('skills')"/>
             <h1>Skills</h1>
             <skills-chart />
@@ -61,9 +62,19 @@ const someOf = (items, value) => {
     return item.toLowerCase().includes(value)  
   })
 }
+
+function range(size, startAt = 0) {
+    return [...Array(size).keys()].map(i => i + startAt);
+}
+
 export default {
   name: 'resume',
   methods: {
+    filterYears (experience) {
+      if (!experience) this.filters.years = null
+      let {startDate, endDate} = experience
+      this.filters.years = range(parseInt(endDate || 2020) - parseInt(startDate) + 1, parseInt(startDate))
+    },
     highlightedText (text) {
       return this.query.trim() !== '' && text.toLowerCase().includes(this.query)
     },
@@ -106,10 +117,16 @@ export default {
       return this.experiences.filter(experience => {
         return someOf(Object.values(experience), this.query)
       })
+    },
+    selectedFilters () {
+      return Object.values(this.filters).find(filter => filter !== null)
     }
   },
   data () {
     return {
+      filters: {
+        years: null
+      },
       experienceCol: defaultExperienceColumnWidth,
       skillsCol: defaultSkillsColumnWidth,
       collapseSection: {
@@ -140,6 +157,7 @@ export default {
     border-right: 1px solid #cfcfd0;
     .experience {
       border: none;
+
       .header {
         display: flex;
         flex-direction: row;
@@ -149,6 +167,9 @@ export default {
         .company {
           background-color: #caf0f3;
           padding: 3px 5px;
+
+          .year-button {
+          }
         }
       }
 
@@ -171,12 +192,23 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
+        padding-left: 20px;
 
         .bullet {
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
           justify-content: flex-start;
           text-align: left;
+          width: 80%;
+
+          .bullet-icon {
+            display: inline-flex;
+            margin-right: 10px;
+            margin-top: 6px;
+          }
+          .bullet-text {
+            display: inline-flex;
+          }
         }
       }
     }

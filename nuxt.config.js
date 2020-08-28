@@ -10,12 +10,15 @@ export default {
   ** See https://nuxtjs.org/api/configuration-target
   */
   target: 'static',
+  // router: {
+  //   base: '/<repository-name>/'
+  // },
   /*
   ** Headers of the page
   ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
-    title: 'Jon Wexler | Code ++ ',
+    title: 'Jon Wexler | Code, Design, Opportunity ',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

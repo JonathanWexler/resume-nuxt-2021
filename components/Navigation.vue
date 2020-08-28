@@ -120,12 +120,13 @@ export default {
 
 .name-card {
   font-family: OpenSans-Light;
-  font-size: 35px;
+  font-size: 30px;
   background-color: #ebfcfd;
   color: rgba(82, 82, 82, 0.50);
   text-align: left;
   border: none;
   outline : none;
+  height: 68px;
   border-right: 8px solid #caf0f3;
 
   &.blink {

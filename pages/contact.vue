@@ -2,19 +2,24 @@
   <div class="container">
     <b-card class="main">
       <b-row>
-        <b-col class="col" sm=12 md=4>
-          <a href="https://github.com/JonathanWexler">
+        <b-col class="col" sm=12 md=3>
+          <a href="https://github.com/JonathanWexler" target="_blank">
             <font-awesome-icon size="6x" :icon="['fab', 'github']" />
           </a>
         </b-col>
-        <b-col class="col"  sm=12 md=4>
-          <a href="http://www.linkedin.com/in/jonathanwexler">
+        <b-col class="col" sm=12 md=3>
+          <a href="http://www.linkedin.com/in/jonathanwexler" target="_blank">
             <font-awesome-icon size="6x" :icon="['fab', 'linkedin']" />
           </a>
         </b-col>
-        <b-col class="col"  sm=12 md=4>
-          <a href="https://twitter.com/TheWexler">
+        <b-col class="col" sm=12 md=3>
+          <a href="https://twitter.com/TheWexler" target="_blank">
             <font-awesome-icon size="6x" :icon="['fab', 'twitter']" />
+          </a>
+        </b-col>
+        <b-col class="col" sm=12 md=3>
+          <a href="https://www.manning.com/books/get-programming-with-node-js?a_aid=wexler" target="_blank">
+            <font-awesome-icon size="6x" icon="book-open" />
           </a>
         </b-col>
       </b-row>
@@ -29,10 +34,8 @@ export default {}
 <style lang="scss" scoped>
 .container {
   margin: 0 auto;
-  // min-height: 100vh;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   text-align: center;
   padding-top: 20px;
 
@@ -40,7 +43,6 @@ export default {}
     width: 100%;
 
     a {
-      // color: #ebfcfd;
       color: #212529;
     }
 

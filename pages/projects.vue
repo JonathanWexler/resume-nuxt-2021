@@ -1,6 +1,26 @@
 <template>
   <div class="container">
-    <h1>Projects</h1>
+    <b-row>
+      <b-col sm="12">
+        <a href="http://www.linkedin.com/in/jonathanwexler" target="_blank" v-for="(project, index) in [1,2,3,4,5,6]" :key="index">
+          <b-card class="project-card">
+            <b-row class="row">
+              <b-col class="col" sm=4>
+                <font-awesome-icon class="project-icon" size="4x" icon="project-diagram" />
+              </b-col>
+              <b-col class="col details" sm=8>
+                <section class="title">
+                  Content Title
+                </section>
+                <section class="description">
+                  Content description  Content description  Content description  Content description  Content description  Content description  Content description
+                </section>
+              </b-col>
+            </b-row>
+          </b-card>
+        </a>
+      </b-col>
+    </b-row>
   </div>
 </template>
 
@@ -11,37 +31,36 @@ export default {}
 <style lang="scss" scoped>
 .container {
   margin: 0 auto;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
+  padding-top: 20px;
   text-align: center;
+
+  .row {
+    max-width: 800px;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+
+    .details {
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    .project-icon {
+      color: #212529;
+      text-decoration: none;
+    }
+  }
 }
 
 .title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+  display: inline-flex;
 }
 
 .links {
