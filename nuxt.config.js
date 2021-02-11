@@ -11,7 +11,7 @@ export default {
   */
   target: 'static',
   router: {
-    base: '/resume-nuxt-2021/'
+    base: '/'
   },
   /*
   ** Headers of the page
