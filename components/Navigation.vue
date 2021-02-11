@@ -10,7 +10,8 @@
                 variant="light"
                 size="lg"
                 ref="name"
-                to="/">
+                to="/"
+                exact>
                   Jon Wexler
               </b-button>
             </b-col>
@@ -22,6 +23,7 @@
                   size="lg"
                   v-for="item in buttons"
                   :to="item.link"
+                  exact
                   :key="item.label">
                   <font-awesome-icon :icon="item.icon" />
                   {{ item.label }}
@@ -65,22 +67,22 @@ export default {
       buttons: [
         {
           label: 'Resume',
-          link: 'resume',
+          link: '/resume',
           icon: 'file-alt'
         },
         // {
         //   label: 'Projects',
-        //   link: 'projects',
+        //   link: '/projects',
         //   icon: 'project-diagram'
         // },
         {
           label: 'Photos',
-          link: 'photos',
+          link: '/photos',
           icon: 'images'
         },
         {
           label: 'Contact',
-          link: 'contact',
+          link: '/contact',
           icon: 'id-card'
         },
       ]
