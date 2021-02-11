@@ -18,3 +18,7 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+- After generating new pages
+- add and save new dist, then
+- run `git subtree push --prefix dist origin gh-pages`
