@@ -11,9 +11,8 @@
           </p>
           <p>
             I'm a software engineer specializing in web development and teaching application development
-            concepts. I have instructed <a href="https://nycda.com/">programming courses</a> in Ruby on
-            Rails and Node.js with Express.js,
-            and conducted workshops in Philadelphia and New York City. </p>
+            concepts. I have instructed <a href="https://nycda.com/about">programming courses</a> in Ruby on
+            Rails and Node.js with Express.js, and conducted workshops in Philadelphia and New York City. </p>
 
           <p> As a former team lead and consultant
             in application development I'm always looking for better ways to collaborate with other
@@ -39,6 +38,13 @@ export default {}
 </script>
 
 <style lang="scss" scoped>
+.main-image {
+  display: flex;
+  justify-content: center;
+}
+#main-image {
+  max-height: 420px;
+}
 .profile-container {
   margin-top: 20px;
   margin: 0 auto;

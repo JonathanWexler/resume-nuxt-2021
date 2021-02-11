@@ -68,11 +68,11 @@ export default {
           link: 'resume',
           icon: 'file-alt'
         },
-        {
-          label: 'Projects',
-          link: 'projects',
-          icon: 'project-diagram'
-        },
+        // {
+        //   label: 'Projects',
+        //   link: 'projects',
+        //   icon: 'project-diagram'
+        // },
         {
           label: 'Photos',
           link: 'photos',
@@ -120,6 +120,8 @@ export default {
 
 .name-card {
   font-family: OpenSans-Light;
+  margin-right: 30px;
+  width: 185px;
   font-size: 30px;
   background-color: #ebfcfd;
   color: rgba(82, 82, 82, 0.50);

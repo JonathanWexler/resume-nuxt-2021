@@ -11,7 +11,7 @@ export default {
   */
   target: 'static',
   router: {
-    base: '/sample-resume/'
+    base: '/'
   },
   /*
   ** Headers of the page
@@ -33,6 +33,7 @@ export default {
   */
   css: [
     '@fortawesome/fontawesome-svg-core/styles.css',
+    'vue-image-lightbox/dist/vue-image-lightbox.min.css',
     '~/assets/main.css'
   ],
   /*

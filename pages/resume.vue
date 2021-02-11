@@ -42,6 +42,7 @@
             <font-awesome-icon class="expand" :icon="expandIcon" @click="toggleSection('skills')"/>
             <h1>Skills</h1>
             <skills-chart />
+              <img class="resume-thumb" src="~/assets/resume_thumb.png" alt="" @click="openPDF">
           </b-col>
       </b-row>
     </b-card>
@@ -70,6 +71,10 @@ function range(size, startAt = 0) {
 export default {
   name: 'resume',
   methods: {
+    openPDF () {
+      const pdfPath = '/jon_wexler_resume.pdf';
+      window.open(pdfPath);
+    },
     filterYears (experience) {
       if (!experience) this.filters.years = null
       let {startDate, endDate} = experience
@@ -141,6 +146,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.resume-thumb {
+  max-width: 100%;
+}
 .highlight {
   // background-color: #caf0f3;
   background-color: #ffd400;

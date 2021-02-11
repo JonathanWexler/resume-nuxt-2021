@@ -143,6 +143,74 @@ export default {
       ]
     },
   ],
+  volunteer: [
+    {
+      company: 'Re:Coded',
+      role: 'Software Engineer Instructor',
+      bullets: [
+        {
+          text: `Instruct multi-day workshops for high school students in the middle east.`
+        },
+        {
+          text: `Build curriculum and exercises for programming paradigms and best practices`
+        },
+      ],
+      link: 'https://www.re-coded.com/bloomberg-sessions',
+      startDate: '2020',
+      endDate: '2020',
+      tags: [
+        'javascript', 'html', 'css', `node.js`, 'react.js', 'vue.js'
+      ]
+    },
+    {
+      company: 'CodeNation',
+      role: 'Software Engineer Instructor',
+      bullets: [
+        {
+          text: `Instruct bi-weekly engineering classes for high school students`
+        },
+        {
+          text: `Build curriculum and exercises for classes of 30 students`
+        },
+      ],
+      link: 'https://codenation.org/',
+      startDate: '2020',
+      endDate: '2021',
+      tags: [
+        'javascript', 'html', 'css', `node.js`, 'python'
+      ]
+    },
+    {
+      company: 'FIRST Robotics',
+      role: 'Software Engineer Consultant',
+      bullets: [
+        {
+          text: `Collaborate with high school students on app development for robotics competition`
+        },
+      ],
+      link: 'https://www.firstinspires.org/robotics/frc',
+      startDate: '2019',
+      endDate: '2020',
+      tags: [
+        'javascript', 'html', 'css', `node.js`, 'react.js'
+      ]
+    },
+    {
+      company: 'LLS',
+      role: 'Volunteer',
+      bullets: [
+        {
+          text: `Volunteered over 200 hours to raise over $12k for Leukemia research`
+        },
+      ],
+      link: 'https://www.lls.org/',
+      startDate: '2017',
+      endDate: '2020',
+      tags: [
+        'volunteer', 'programming'
+      ]
+    },
+  ],
   education: [
     {
       name: 'Brandeis University',
