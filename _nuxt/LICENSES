@@ -47,6 +47,8 @@
   * 
  */
 
+/*! For license information please see vue-image-lightbox.min.js.LICENSE.txt */
+
 /**!
  * @fileOverview Kickass library to create and place poppers near their reference elements.
  * @version 1.16.1
