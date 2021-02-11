@@ -4,7 +4,7 @@
       <b-row>
 
         <b-col class="main-image">
-          <img id="main-image" src="http://jonwexler.com/images/profile.gif" alt="">
+          <img id="main-image" src="~/assets/profile.gif" alt="">
         </b-col>
         <b-col class="main-text">
           <p>Hi, I'm Jon.
