@@ -5,7 +5,7 @@
     >
       <b-form-input v-model="query" placeholder="Search the resume..."></b-form-input>
       <b-row class="resume">
-          <b-col sm="12" :md="experienceCol" class="experience-section" v-if="!this.collapseSection.experience">
+          <b-col sm="12" :md="experienceCol" class="section experience-section" v-if="!this.collapseSection.experience">
             <font-awesome-icon class="expand" :icon="expandIcon" @click="toggleSection('experience')"/>
             <h1>Experience</h1>
             <section class="experiences">
@@ -38,7 +38,7 @@
               </b-card>
             </section>
           </b-col>
-          <b-col sm="12" :md="skillsCol" id="skills" class="skills-section" v-if="!this.collapseSection.skills">
+          <b-col sm="12" :md="skillsCol" id="skills" class="section skills-section" v-if="!this.collapseSection.skills">
             <font-awesome-icon class="expand" :icon="expandIcon" @click="toggleSection('skills')"/>
             <h1>Skills</h1>
             <skills-chart />
@@ -96,7 +96,6 @@ export default {
       }
     },
     toggleSection (section) {
-
       if (section === 'skills') {
         this.collapseSection['experience'] = !this.collapseSection['experience']
         this.collapseSection['skills'] = true
@@ -223,8 +222,8 @@ export default {
     }
   }
 
-  .skills-section {
-    width: 40%;
+  .section {
+    width: 100%;
   }
 }
 .main {

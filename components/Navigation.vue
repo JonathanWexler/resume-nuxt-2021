@@ -122,7 +122,6 @@ export default {
 
 .name-card {
   font-family: OpenSans-Light;
-  margin-right: 30px;
   width: 185px;
   font-size: 30px;
   background-color: #ebfcfd;
