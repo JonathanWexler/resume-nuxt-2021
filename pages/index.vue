@@ -1,13 +1,14 @@
 <template>
-  <b-container class="profile-container">
+  <b-container class="profile-container" fluid>
     <b-card>
       <b-row>
-
-        <b-col class="main-image">
-          <img id="main-image" src="~/assets/profile.gif" alt="">
+        <b-col cols="6" xs="12" sm="6" lg="6">
+            <img v-if="hovered" class="main-image" src="~/assets/profile_gif_color.gif" alt="" @mouseout="changeHover(false)">
+            <img v-else class="main-image image" src="~/assets/profile.jpg" alt="" @mouseover="changeHover(true)">
         </b-col>
-        <b-col class="main-text">
-          <p>Hi, I'm Jon.
+        <b-col cols="6" xs="12" sm="6" lg="6">
+          <section id="main-text">
+          <p>Hi, I'm Jon. Take a seat.
           </p>
           <p>
             I'm a software engineer specializing in web development and teaching application development
@@ -25,8 +26,9 @@
 
           <p>Listen to my <a
               href="http://therabbithole.libsyn.com/102-digging-into-javascript-w-jonathan-wexler">podcast
-              interview on Node.js</a> with The Rabbit Hole.</p>
-          </a>
+              interview on Node.js</a> with The Rabbit Hole.
+          </p>
+          </section>
         </b-col>
       </b-row>
     </b-card>
@@ -34,25 +36,54 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data () {
+    return {
+      hovered: false
+    }
+  },
+  methods: {
+    changeHover (val) {
+      this.hovered = val
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 .main-image {
-  display: flex;
-  justify-content: center;
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  // clip-path: polygon(0% 15%, 50% 0%, 60% 0%, 100% 10%, 100% 30%, 75% 100%, 0% 80%);
+  
+  &.image {
+    // &:hover {
+    //   opacity: 0;
+    // }
+  }
 }
-#main-image {
-  max-height: 420px;
+
+#main-text {
+  width: 100%;
+
+  a {
+    &:hover {
+      background-color: #ffd400;
+      text-decoration: none;
+      background-clip: padding-box;
+    }
+  }
 }
+
 .profile-container {
   margin-top: 20px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   margin-top: 20px;
   text-align: left;
+  max-width: 1000px;
 }
 
 .title {
@@ -81,7 +112,12 @@ export default {}
   padding-bottom: 15px;
 }
 
-.links {
-  padding-top: 15px;
+@keyframes like-gif {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
 }
 </style>

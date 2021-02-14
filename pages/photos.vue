@@ -9,10 +9,8 @@
       :media="randomPhotos"
       />
     <b-row class="no-gutters">
-      <b-col col cols="6" xs="6" sm="6" lg="4" v-for="(photo, index) in randomPhotos" :key="index">
-        <!-- <a :href="photo.src"> -->
-          <img class="photo" v-lazy="photo.src" @click="handlePhotoClick(index)">
-        <!-- </a> -->
+      <b-col col cols="6" xs="6" sm="4" lg="3" v-for="(photo, index) in randomPhotos" :key="index">
+        <img class="photo" v-lazy="photo.src" @click="handlePhotoClick(index)">
       </b-col>
     </b-row>
   </b-container>
@@ -60,12 +58,18 @@ export default {
 <style lang="scss" scoped>
 .buffer {
   margin-top: 30px;
+  padding: 0;
 }
 
 .photo {
   width: 100%;
-  height: 600px;
+  height: 400px;
   object-fit: cover;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
 }
 
 .container {

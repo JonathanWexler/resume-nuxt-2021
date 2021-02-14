@@ -16,6 +16,8 @@ export default {
     leaveClass: '',
     leaveToClass: 'enter',
     leaveActiveClass: 'enter-active',
+  },
+  mounted () {
   }
 }
 </script>
