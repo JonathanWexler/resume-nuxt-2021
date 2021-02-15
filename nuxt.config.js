@@ -34,6 +34,8 @@ export default {
   css: [
     '@fortawesome/fontawesome-svg-core/styles.css',
     'vue-image-lightbox/dist/vue-image-lightbox.min.css',
+    '~/assets/fonts/Cabin-Regular.ttf',
+    '~/assets/fonts/SignikaNegative-Light.otf',
     '~/assets/main.css'
   ],
   /*

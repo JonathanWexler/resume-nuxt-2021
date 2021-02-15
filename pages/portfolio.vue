@@ -13,7 +13,9 @@
                 <div class="header">
                   <span class="company">{{ experience.company }}</span>
                   <b-button variant="outline-primary" @click="filterYears(experience)" class="border-0">
-                    <span class="year">{{ `${experience.startDate} - ${experience.endDate || 'Present'}` }}</span>
+                    <span class="year" @click="dateRangeSelect(experience.startDate, experience.endDate)">
+                      {{ `${experience.startDate} - ${experience.endDate || 'Present'}` }}
+                      </span>
                   </b-button>
                 </div>
                 <div class="role">
@@ -31,6 +33,7 @@
                     :class="{ highlight: highlightedText(tag)}"
                     variant="primary"
                     v-for="tag in experience.tags"
+                    @click="tagClick(tag)"
                     :key="tag">
                     {{ tag }}
                   </b-badge>
@@ -40,9 +43,52 @@
           </b-col>
           <b-col sm="12" :md="skillsCol" id="skills" class="section skills-section" v-if="!this.collapseSection.skills">
             <font-awesome-icon class="expand" :icon="expandIcon" @click="toggleSection('skills')"/>
-            <h1>Skills</h1>
-            <skills-chart />
+            <section>
+              <h1>Education</h1>
+              <!-- Education -->
+              <section class="experiences">
+                <b-card class="experience" v-for="experience in filteredEducation" :key="experience.title">
+                  <div class="header">
+                    <span class="company">{{ experience.company }}</span>
+                    <b-button variant="outline-primary" @click="filterYears(experience)" class="border-0">
+                      <span class="year" @click="dateRangeSelect(experience.startDate, experience.endDate)">
+                        {{ `${experience.startDate} - ${experience.endDate || 'Present'}` }}
+                        </span>
+                    </b-button>
+                  </div>
+                  <div class="role">
+                    {{ experience.role }}
+                  </div>
+                  <ul class="bullets">
+                    <li class="bullet" :class="{ highlight: highlightedText(bullet.text)}" v-for="bullet in experience.bullets" :key="bullet.text">
+                      <font-awesome-icon class="bullet-icon" size="xs" icon="dot-circle" fill="blue" />
+                      <p class="bullet-text">{{ bullet.text }}</p>
+                    </li>
+                  </ul>
+                  <section class="tags">
+                    <b-badge
+                      class="tag"
+                      :class="{ highlight: highlightedText(tag)}"
+                      variant="primary"
+                      v-for="tag in experience.tags"
+                      @click="tagClick(tag)"
+                      :key="tag">
+                      {{ tag }}
+                    </b-badge>
+                  </section>
+                </b-card>
+              </section>
+            </section>
+            <section>
+              <h1>Skills</h1>
+              <skills-chart :startYear="dateRange.start" :endYear="dateRange.end"/>
+            </section>
+            <section>
               <img class="resume-thumb" src="~/assets/resume_thumb.png" alt="" @click="openPDF">
+            </section>
+            <section>
+              <!-- Giving Back -->
+            </section>
           </b-col>
       </b-row>
     </b-card>
@@ -50,7 +96,7 @@
 </template>
 
 <script>
-import resumeData from '@/data/resume'
+import { education, experiences, skills } from '@/data/resume'
 const defaultExperienceColumnWidth = 8
 const defaultSkillsColumnWidth = 4
 
@@ -71,6 +117,20 @@ function range(size, startAt = 0) {
 export default {
   name: 'resume',
   methods: {
+    dateRangeSelect (start, end) {
+      end = parseInt(end) || new Date().getFullYear()
+      start = parseInt(start)
+      console.log('jerere')
+      this.dateRange = {
+        start,
+        end
+      }
+      console.log(start, end)
+      this.redrawSkills()
+    },
+    tagClick (text) {
+      this.query = text;
+    },
     openPDF () {
       const pdfPath = '/jon_wexler_resume.pdf';
       window.open(pdfPath);
@@ -95,14 +155,17 @@ export default {
         this.skillsCol = defaultSkillsColumnWidth
       }
     },
+    redrawSkills(){
+      this.collapseSection['skills'] = true
+      this.$nextTick(() => {
+        this.collapseSection['skills'] = false
+        this.checkCols()
+      })
+    },
     toggleSection (section) {
       if (section === 'skills') {
         this.collapseSection['experience'] = !this.collapseSection['experience']
-        this.collapseSection['skills'] = true
-        this.$nextTick(() => {
-          this.collapseSection['skills'] = false
-          this.checkCols()
-        })
+        this.redrawSkills()
       } else if (section === 'experience') {
         this.collapseSection['skills'] = !this.collapseSection['skills']
         this.checkCols()
@@ -110,15 +173,21 @@ export default {
     }
   },
   mounted () {
-    this.experiences.forEach(e => e.tags.sort())
+    // this.experiences.forEach(e => e.tags.sort())
   },
   computed: {
     expandIcon () {
       return Object.values(this.collapseSection).includes(true) ? 'compress-arrows-alt' : 'expand-arrows-alt'
     },
+    filteredEducation () {
+      if (this.query === '') return education
+      return education.filter(ed => {
+        return someOf(Object.values(ed), this.query)
+      })
+    },
     filteredExperiences () {
-      if (this.query === '') return this.experiences
-      return this.experiences.filter(experience => {
+      if (this.query === '') return experiences
+      return experiences.filter(experience => {
         return someOf(Object.values(experience), this.query)
       })
     },
@@ -138,7 +207,8 @@ export default {
         skills: false
       },
       query: '',
-      experiences: resumeData.experiences
+      // experiences: resumeData.experiences,
+      dateRange: {}
     }
   }
 }
@@ -155,26 +225,41 @@ export default {
   color: #21262a;
 }
 
+#skills {
+    font-family: "SignikaNegative-Light";
+}
+
 .resume {
   display: flex;
   flex-direction: row;
-  font-family: OpenSans-Light;
+  font-family: "SignikaNegative-Light";
+  padding-top: 15px;
 
   .experience-section {
     width: 60%;
     border-right: 1px solid #cfcfd0;
-    .experience {
+
+    &.expanded {
+      border: none;
+    }
+  }
+
+  .section {
+    width: 100%;
+    padding: 0;
+        .experience {
       border: none;
 
       .header {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        // color: rgba(82, 82, 82, 0.5);
 
         .company {
-          background-color: #caf0f3;
+          background-color: #ebfbfd;
           padding: 3px 5px;
+          text-align: left;
+          max-width: 60%;
 
           .year-button {
           }
@@ -216,21 +301,17 @@ export default {
           }
           .bullet-text {
             display: inline-flex;
+            margin-bottom: 0.5rem;
           }
         }
       }
     }
-  }
-
-  .section {
-    width: 100%;
   }
 }
 .main {
   width: 100%;
 
   .resume {
-    margin-top: 30px;
   }
 }
 
@@ -241,7 +322,7 @@ export default {
   justify-content: center;
   /* align-items: center; */
   text-align: center;
-  margin-top: 20px;
+  // margin-top: 20px;
 }
 
 .title {

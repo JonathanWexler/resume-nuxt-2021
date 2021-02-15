@@ -13,3 +13,13 @@
 .leave{
   transform: translate3d(3000px, 0, 0);
 }
+
+@font-face {
+  font-family: "SignikaNegative-Light";
+  src: local("SignikaNegative-Light"),
+   url(~assets/fonts/SignikaNegative-Light.ttf) format("truetype");
+}
+
+html {
+  font-family: "SignikaNegative-Light" !important;
+}

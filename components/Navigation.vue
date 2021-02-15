@@ -1,40 +1,37 @@
 <template>
-  <div class="Navigation">
-    <!-- <transition name="fade"> -->
-      <nav class="row" v-if="show">
-        <div>
-          <b-row class="center no-gutters" align-h="center">
-            <b-col sm="12" md="4" class="center">
+  <div class="Navigation" v-if="show">
+    <nav class="row nav-container">
+      <div>
+        <b-row class="center no-gutters" align-h="center">
+          <b-col sm="12" md="5" class="center">
+            <b-button
+              class="name-card"
+              variant="light"
+              size="lg"
+              ref="name"
+              to="/"
+              exact>
+                Jon Wexler
+            </b-button>
+          </b-col>
+          <b-col sm="12" md="7" class="center">
+            <b-button-group>
               <b-button
-                class="name-card"
+              class="nav-button"
                 variant="light"
                 size="lg"
-                ref="name"
-                to="/"
-                exact>
-                  Jon Wexler
+                v-for="item in buttons"
+                :to="item.link"
+                exact
+                :key="item.label">
+                <font-awesome-icon :icon="item.icon" />
+                {{ item.label }}
               </b-button>
-            </b-col>
-            <b-col sm="12" md="8" class="center">
-              <b-button-group>
-                <b-button
-                class="nav-button"
-                  variant="light"
-                  size="lg"
-                  v-for="item in buttons"
-                  :to="item.link"
-                  exact
-                  :key="item.label">
-                  <font-awesome-icon :icon="item.icon" />
-                  {{ item.label }}
-                </b-button>
-              </b-button-group>
-            </b-col>
-        </b-row>
-        </div>
-      </nav>
-      <div class="row buffer" v-else></div>
-    <!-- </transition> -->
+            </b-button-group>
+          </b-col>
+      </b-row>
+      </div>
+    </nav>
   </div>
 </template>
 <script>
@@ -66,15 +63,15 @@ export default {
       show: true,
       buttons: [
         {
-          label: 'Resume',
-          link: '/resume',
+          label: 'Portfolio',
+          link: '/portfolio',
           icon: 'file-alt'
         },
-        // {
-        //   label: 'Projects',
-        //   link: '/projects',
-        //   icon: 'project-diagram'
-        // },
+        {
+          label: 'Book',
+          link: '/book',
+          icon: 'book'
+        },
         {
           label: 'Photos',
           link: '/photos',
@@ -93,6 +90,7 @@ export default {
 <style lang="scss" scoped>
 .center {
   text-align: center;
+  margin-bottom: 10px;
 }
 .btn:focus,.btn:active {
    outline: none !important;
@@ -103,7 +101,17 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 100px;
+  margin-top: 6vw;
+  position: fixed;
+  /* margin: 0 auto; */
+  width: 100%;
+  z-index: 20;
+
+  .nav-container {
+    &.show {
+      background-color: transparent;
+    }
+  }
 
   .buffer {
     width: 100%;
@@ -121,7 +129,7 @@ export default {
 
 
 .name-card {
-  font-family: OpenSans-Light;
+  font-family: "SignikaNegative-Light";
   width: 185px;
   font-size: 30px;
   background-color: #ebfcfd;

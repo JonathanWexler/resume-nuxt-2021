@@ -66,6 +66,8 @@ export default {
 
 #main-text {
   width: 100%;
+  font-family: "SignikaNegative-Light";
+  font-size: 16px;
 
   a {
     &:hover {
@@ -77,26 +79,24 @@ export default {
 }
 
 .profile-container {
-  margin-top: 20px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
   text-align: left;
   max-width: 1000px;
 }
 
 .title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  // font-family:
+  //   'Quicksand',
+  //   'Source Sans Pro',
+  //   -apple-system,
+  //   BlinkMacSystemFont,
+  //   'Segoe UI',
+  //   Roboto,
+  //   'Helvetica Neue',
+  //   Arial,
+  //   sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;

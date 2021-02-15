@@ -1,46 +1,110 @@
 <template>
   <div class="skills-chart">
     <vue-frappe
+      ref="languageChart"
       id="language"
-      :labels="labels"
+      :labels="filteredLabels"
       title="Programming Language Growth Chart"
       type="bar"
       :height="300"
       :colors="colors"
-      :dataSets="languageChartData">
+      :dataSets="filteredLanguageData"
+      :tooltipOptions="tooltipOptions">
     </vue-frappe>
     <vue-frappe
       id="frameworks"
-      :labels="labels"
+      :labels="filteredLabels"
       title="Framework Growth Chart"
       type="bar"
       :height="300"
       :colors="colors"
-      :dataSets="frameworkChartData">
+      :tooltipOptions="tooltipOptions"
+      :dataSets="filteredFrameworkData">
     </vue-frappe>
     <vue-frappe
       id="software"
-      :labels="labels"
+      :labels="filteredLabels"
       title="Tooling Growth Chart"
       type="bar"
       :height="300"
       :colors="colors"
-      :dataSets="softwareChartData">
+      :tooltipOptions="tooltipOptions"
+      :dataSets="filteredSoftwareData">
     </vue-frappe>
   </div>
 </template>
 <script>
 import resumeData from '@/data/resume'
+const labels = [
+    '2011', '2012', '2013', '2014',
+    '2015', '2016', '2017', '2018', '2019', '2020'
+]
 
+const colors = ['purple', '#ffa3ef', 'light-blue', 'green', 'blue', 'red', 'orange', 'purple']
 export default {
   name: 'SkillsChart',
+  props: {
+    startYear: {
+        type: Number
+    },
+    endYear: {
+        type: Number
+    }
+  },
+  computed: {
+    tooltipOptions () {
+		return {
+            formatTooltipX: d => (d + '').toUpperCase(),
+            formatTooltipY: d => d + '%',
+        }
+	},
+      filteredIndices () {
+          let start = 0
+          let end = this.labels.length - 1
+        while (this.labels[start] < (this.startYear || 2000)  || this.labels[end] > (this.endYear || 2040)) {
+            if (this.labels[end] > this.endYear) end--
+            if (this.labels[start] < this.startYear ) start++
+        }
+        return [start, end]
+      },
+      filteredLabels () {
+          let [start, end] = this.filteredIndices
+          if (!start || !end) return this.labels
+          return this.labels.slice(start, end+1)
+      },
+      filteredLanguageData () {
+          let [start, end] = this.filteredIndices
+          return this.languageChartData.map(d => {
+              return {
+                  ...d,
+                  values: d.values.slice(start, end + 1)
+              }
+          })
+      },
+      filteredFrameworkData () {
+          let [start, end] = this.filteredIndices
+          return this.frameworkChartData.map(d => {
+              return {
+                  ...d,
+                  values: d.values.slice(start, end + 1)
+              }
+          })
+      },
+      filteredSoftwareData () {
+          let [start, end] = this.filteredIndices
+          return this.softwareChartData.map(d => {
+              return {
+                  ...d,
+                  values: d.values.slice(start, end + 1)
+              }
+          })
+      },
+
+  },
   data () {
       return {
-        colors: ['purple', '#ffa3ef', 'light-blue', 'green', 'blue', 'red', 'orange', 'purple'],
-        labels: [
-            '2011', '2012', '2013', '2014',
-            '2015', '2016', '2017', '2018', '2019', '2020'
-        ],
+        colors,
+        labels,
         languageChartData: [{
               name: "Java", chartType: 'line',
               values: [0, 30, 60, 80, 70, 65, 60, 55, 60, 65]
@@ -121,6 +185,6 @@ export default {
           }
         ],
       }
-  }
+  },
 }
 </script>

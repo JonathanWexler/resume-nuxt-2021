@@ -1,7 +1,9 @@
 <template>
   <div>
     <Navigation />
-    <Nuxt />
+    <div class="main">
+      <Nuxt/>
+    </div>
   </div>
 </template>
 <script>
@@ -22,16 +24,27 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+
+.main{
+  padding-top: 200px;
+  padding-bottom: 50px;
+
+}
+
+body {
+    // font-family: "SignikaNegative-Light" !important;
+}
+
 html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  // font-family:
+  //   'Source Sans Pro',
+  //   -apple-system,
+  //   BlinkMacSystemFont,
+  //   'Segoe UI',
+  //   Roboto,
+  //   'Helvetica Neue',
+  //   Arial,
+  //   sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -84,19 +97,4 @@ html {
   opacity: 0;
 }
 
-// .right-enter-active,
-// .right-leave-active {
-//   transition: all 0.5s;
-// }
-
-// .right-enter,
-// .right-leave-to {
-//   // opacity: 0;
-//   transform: translate3d(-1000px, 0, 0);
-// }
-
-// .right-move {
-//   // opacity: 0.5;
-//   transition: 0.5s;
-// }
 </style>

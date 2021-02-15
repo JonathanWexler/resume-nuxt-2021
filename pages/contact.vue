@@ -37,7 +37,6 @@ export default {}
   display: flex;
   justify-content: center;
   text-align: center;
-  padding-top: 20px;
 
   .main {
     width: 100%;
