@@ -119,7 +119,7 @@ function range(size, startAt = 0) {
 }
 
 export default {
-  name: 'resume',
+  name: 'portfolio',
   methods: {
     yearButtonType (experience) {
       return this.yearSelected(experience) ? 'success' : 'outline-primary'
