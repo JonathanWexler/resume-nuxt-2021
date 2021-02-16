@@ -147,7 +147,7 @@ export default {
       this.query = text;
     },
     openPDF () {
-      const pdfPath = '/jon_wexler_resume.pdf';
+      const pdfPath = '/resume.pdf';
       window.open(pdfPath);
     },
     filterYears (experience) {

@@ -4,7 +4,7 @@ export const experiences = [
     role: 'Senior Software Engineer',
     bullets: [
       {
-        text: `Build responsive web tools using Ruby on Rails, Polymer, Vue.js and custom gems across multiple internal environments`
+        text: `Build responsive web tools using Ruby on Rails, Polymer, Vue.js, and custom gems across multiple internal environments`
       },
       {
         text: `Optimize Java Spring services to respond to millions of weekly sessions`
@@ -24,7 +24,7 @@ export const experiences = [
     role: 'Author of Get Programming with Node.js',
     bullets: [
       {
-        text: `Teach web development in Node.js in 34 fast-paced, fun, and practical lessons, on how to extend your existing JavaScript skills to write back-end code for your web applications`
+        text: `Teach web development in Node.js in 34 fast-paced, fun, and practical lessons on how to extend your existing JavaScript skills to write back-end code for your web applications`
       },
       {
         text: `Coordinate weekly editorial meetings and reviewer sessions`
