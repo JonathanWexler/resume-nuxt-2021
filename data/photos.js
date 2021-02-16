@@ -1,6 +1,6 @@
 import imgurRaw from './imgurRaw'
 
-const imgurPhotos = imgurRaw.data.map(c => ({ src: c.link.replace(".jpg", "l.jpg"), thumb: c.link.replace(".jpg", "s.jpg")}))
+const imgurPhotos = imgurRaw.data.map(c => ({ src: c.link.replace(".jpg", "h.jpg"), thumb: c.link.replace(".jpg", "s.jpg")}))
 let photos = [
   {
     src: 'https://64.media.tumblr.com/0c63f4a2c3219361acb55c346edb3187/tumblr_mqnihrdyg51svodtno1_1280.jpg',

@@ -12,7 +12,10 @@
               <b-card class="experience" v-for="experience in filteredExperiences" :key="experience.title">
                 <div class="header">
                   <span class="company">{{ experience.company }}</span>
-                  <b-button variant="outline-primary" @click="filterYears(experience)" class="border-0">
+                  <b-button
+                    :variant="yearButtonType(experience)"
+                    @click="filterYears(experience)"
+                    class="border-0">
                     <span class="year" @click="dateRangeSelect(experience.startDate, experience.endDate)">
                       {{ `${experience.startDate} - ${experience.endDate || 'Present'}` }}
                       </span>
@@ -100,6 +103,7 @@ import { education, experiences, skills } from '@/data/resume'
 const defaultExperienceColumnWidth = 8
 const defaultSkillsColumnWidth = 4
 
+const currentDate = new Date().getFullYear()
 const someOf = (items, value) => {
   return items.some(item => {
     if (!item) return false
@@ -117,15 +121,26 @@ function range(size, startAt = 0) {
 export default {
   name: 'resume',
   methods: {
+    yearButtonType (experience) {
+      return this.yearSelected(experience) ? 'success' : 'outline-primary'
+    },
+    yearSelected (experience) {
+      let { start, end } = this.dateRange
+      let isSelected = start === parseInt(experience.startDate)
+                      && end === parseInt(experience.endDate || currentDate)
+      return isSelected
+    },
     dateRangeSelect (start, end) {
-      end = parseInt(end) || new Date().getFullYear()
-      start = parseInt(start)
-      console.log('jerere')
-      this.dateRange = {
-        start,
-        end
+      if (this.yearSelected({startDate: start, endDate: end})) this.dateRange = {}
+      else {
+        end = parseInt(end) || currentDate
+        start = parseInt(start)
+        this.dateRange = {
+          start,
+          end
+        }
       }
-      console.log(start, end)
+
       this.redrawSkills()
     },
     tagClick (text) {
@@ -234,6 +249,7 @@ export default {
   flex-direction: row;
   font-family: "SignikaNegative-Light";
   padding-top: 15px;
+  color: #343a40;
 
   .experience-section {
     width: 60%;

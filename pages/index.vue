@@ -2,11 +2,11 @@
   <b-container class="profile-container" fluid>
     <b-card>
       <b-row>
-        <b-col cols="6" xs="12" sm="6" lg="6">
+        <b-col cols="12" xs="12" sm="12" md="6">
             <img v-if="hovered" class="main-image" src="~/assets/profile_gif_color.gif" alt="" @mouseout="changeHover(false)">
             <img v-else class="main-image image" src="~/assets/profile.jpg" alt="" @mouseover="changeHover(true)">
         </b-col>
-        <b-col cols="6" xs="12" sm="6" lg="6">
+        <b-col cols="12" xs="12" sm="12" md="6">
           <section id="main-text">
           <p>Hi, I'm Jon. Take a seat.
           </p>
@@ -68,6 +68,7 @@ export default {
   width: 100%;
   font-family: "SignikaNegative-Light";
   font-size: 16px;
+  padding-top: 20px;
 
   a {
     &:hover {

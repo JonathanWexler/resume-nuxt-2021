@@ -32,19 +32,19 @@
             <div class="quote">
               <p>Lays out a refreshingly down-to-earth, pragmatic, and clear path that shows you how to navigate your way through Node.js.</p>
               <p class="name">
-                From the foreword by Kyle Simpson, Getify
+                -- From the foreword by Kyle Simpson, Getify
               </p>
             </div>
             <div class="quote">
               <p>The book is worth putting on the shelf for anyone who wants to learn about Node.JS and Express</p>
               <p class="name">
-                Nguyen Sy, Reader
+                -- Nguyen Sy, Reader
               </p>
             </div>
             <div class="quote">
               <p>The go-to book to learn the intricacies of Node and become productive fast.</p>
               <p class="name">
-                Vipul Gupta, Reader
+                -- Vipul Gupta, Reader
               </p>
             </div>
           </section>
@@ -118,6 +118,7 @@ export default {}
     .name {
         font-style: normal;
         text-align: right;
+        font-size: 14px;
       }
     }
   }
