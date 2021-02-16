@@ -2,12 +2,12 @@
   <div class="container">
     <b-card class="main">
       <b-row>
-        <b-col class="col" sm=5 md=5>
+        <b-col class="col" cols=12 md=5>
           <a href="https://www.manning.com/books/get-programming-with-node-js?a_aid=wexler " target="_blank">
             <img class="book-image" src="https://i.imgur.com/QTsQDBe.png" alt="">
           </a>
         </b-col>
-        <b-col class="col" sm=7 md=7>
+        <b-col class="col" cols=7 md=7>
           <h1>Get Programming with Node.js</h1>
           <section class="book-text">
             <p>Get Programming with Node.js teaches you to build web servers using JavaScript and Node. In this engaging tutorial, you’ll work through eight complete projects, from writing the code for your first web server to adding live chat to a web app. Your hands will stay on the keyboard as you explore the most important aspects of the Node development process, including security, database management, authenticating user accounts, and deploying to production. You’ll especially appreciate the easy-to-follow discussions, illuminating diagrams, and carefully explained code!</p>
