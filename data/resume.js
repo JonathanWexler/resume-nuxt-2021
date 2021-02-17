@@ -4,19 +4,22 @@ export const experiences = [
     role: 'Senior Software Engineer',
     bullets: [
       {
-        text: `Build responsive web tools using Ruby on Rails, Polymer, Vue.js, and custom gems across multiple internal environments`
+        text: `Build responsive web tools using Ruby on Rails, Vue.js, D3.js,, Java and Python deployed to and used by millions of daily active users`
       },
       {
-        text: `Optimize Java Spring services to respond to millions of weekly sessions`
+        text: `Lead UI/UX and service architecture and release on legal analytics platform`
       },
       {
-        text: `Develop machine learning models for text classification and collaborative filtering for recommendations`
+        text: `Develop ML models for text classification, entity extraction, and collaborative filtering recommendations; using nlp, Scikit-learn, PySpark- presented to CTO`
+      },
+      {
+        text: `Built ML internal database versioning PIP package integration for model testing`
       },
     ],
     startDate: '2017',
     endDate: null,
     tags: [
-      'ruby', 'ruby on rails', 'node.js', 'vue.js', 'polymer.js', 'jupyter notebook', 'javascript', 'html', 'css', `web development`, 'teaching', 'java'
+      'ruby', 'ruby on rails', 'node.js', 'vue.js', 'polymer.js', 'jupyter notebook', 'javascript', 'html', 'css', `web development`, 'teaching', 'java', 'python', 'scikit-learn', 'kafka'
     ]
   },
   {
@@ -24,16 +27,19 @@ export const experiences = [
     role: 'Author of Get Programming with Node.js',
     bullets: [
       {
-        text: `Teach web development in Node.js in 34 fast-paced, fun, and practical lessons on how to extend your existing JavaScript skills to write back-end code for your web applications`
+        text: `Teach Node.js web development in 34 fast-paced, practical, lessons on how to extend JavaScript skills to write back-end code for the web`
       },
       {
-        text: `Coordinate weekly editorial meetings and reviewer sessions`
+        text: `Coordinate weekly editorial meetings and virtual workshops`
+      },
+      {
+        text: `Designed university curriculum on book contents taught at UC Denver`
       },
     ],
     startDate: '2016',
     endDate: null,
     tags: [
-      'node.js', 'javascript', 'html', 'css', `web development`, 'teaching'
+      'node.js', 'javascript', 'html', 'css', `web development`, 'teaching', 'public speaking', 'express.js', 'databases', 'mongodb'
     ]
   },
   {
@@ -41,13 +47,16 @@ export const experiences = [
     role: 'Lead Developer/Academic Director',
     bullets: [
       {
-        text: `Taught Intensive Web Development course in HTML, CSS, JavaScript, Ruby, and Rails framework`
+        text: `Taught web development course in HTML, CSS, JavaScript, Ruby, and Rails`
       },
       {
-        text: `Managed development team of 10 through agile workflow, testing, staging, and production environment deployments`
+        text: `Managed development team of 10 through agile workflow for product sprints`
       },
       {
-        text: `Oversaw curriculum development and build content for intensive courses in Ruby on Rails and Node.js used by thousands of students`
+        text: `Curated Rails and Node.js curriculum development for thousands of students`
+      },
+      {
+        text: ` Lead transition team, data integrity, during Strayer University acquisition`
       },
     ],
     startDate: '2015',
@@ -61,16 +70,16 @@ export const experiences = [
     role: 'Founder/Designer',
     bullets: [
       {
-        text: `Design logos, reports, and multimedia presentations for professionals and organizations`
+        text: `Design and develop UI/UX and web applications across multiple industries`
       },
       {
-        text: `Develop animated, responsive, and content-driven websites`
+        text: `Manage contractors and development team across client projects`
       },
     ],
     startDate: '2014',
     endDate: null,
     tags: [
-      'ruby', 'ruby on rails', 'node.js', 'vue.js', 'javascript', 'html', 'css', `web development`
+      'ruby', 'ruby on rails', 'node.js', 'vue.js', 'javascript', 'html', 'css', `web development`, 'express.js', 'postgres'
     ]
   },
   {
@@ -78,7 +87,7 @@ export const experiences = [
     role: 'Web Developer',
     bullets: [
       {
-        text: `Built components for large-scale corporate websites using HTML, CSS, XML, XSL, and JS, and designed database query tools in Java.`
+        text: `Built components for large-scale corporate websites using HTML,CSS, XML, XSL, and JS, and designed database query tools in Java`
       },
       {
         text: `Worked extensively with Eclipse IDE and HP Autonomy software`
@@ -87,7 +96,7 @@ export const experiences = [
     startDate: '2014',
     endDate: '2014',
     tags: [
-      'javascript', 'html', 'css', `web development`
+      'javascript', 'html', 'css', `web development`, 'java', 'xml'
     ]
   },
   {
@@ -219,6 +228,21 @@ export const volunteer = [
     endDate: '2020',
     tags: [
       'javascript', 'html', 'css', `node.js`, 'react.js'
+    ]
+  },
+  {
+    company: 'GORUCO',
+    role: 'Co-Organizer',
+    bullets: [
+      {
+        text: `Co-Organized Ruby conference; managed speakers, live stream`
+      },
+    ],
+    link: 'http://goruco.com/',
+    startDate: '2018',
+    endDate: '2018',
+    tags: [
+      'volunteer', 'programming', 'public speaking', 'managing', 'conference'
     ]
   },
   {

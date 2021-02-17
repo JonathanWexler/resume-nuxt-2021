@@ -7,8 +7,8 @@
       <b-row class="resume">
           <b-col sm="12" :md="experienceCol" class="section experience-section" v-if="!this.collapseSection.experience">
             <font-awesome-icon class="expand" :icon="expandIcon" @click="toggleSection('experience')"/>
-            <h1>Experience</h1>
-            <section class="experiences">
+            <section class="experiences" v-if="filteredExperiences.length">
+              <h1>Experience</h1>
               <b-card class="experience" v-for="experience in filteredExperiences" :key="experience.title">
                 <div class="header">
                   <span class="company">{{ experience.company }}</span>
@@ -46,9 +46,8 @@
           </b-col>
           <b-col sm="12" :md="skillsCol" id="skills" class="section skills-section" v-if="!this.collapseSection.skills">
             <font-awesome-icon class="expand" :icon="expandIcon" @click="toggleSection('skills')"/>
-            <section>
+            <section v-if="filteredEducation.length">
               <h1>Education</h1>
-              <!-- Education -->
               <section class="experiences">
                 <b-card class="experience" v-for="experience in filteredEducation" :key="experience.title">
                   <div class="header">
@@ -87,10 +86,43 @@
               <skills-chart :startYear="dateRange.start" :endYear="dateRange.end"/>
             </section>
             <section>
+              <h6>Click below to view resume as a PDF</h6>
               <img class="resume-thumb" src="~/assets/resume_thumb.png" alt="" @click="openPDF">
             </section>
-            <section>
-              <!-- Giving Back -->
+            <section v-if="filteredVolunteer.length">
+              <h1>Giving Back</h1>
+              <section class="experiences">
+                <b-card class="experience" v-for="experience in filteredVolunteer" :key="experience.title">
+                  <div class="header">
+                    <span class="company">{{ experience.company }}</span>
+                    <b-button variant="outline-primary" @click="filterYears(experience)" class="border-0">
+                      <span class="year" @click="dateRangeSelect(experience.startDate, experience.endDate)">
+                        {{ `${experience.startDate} - ${experience.endDate || 'Present'}` }}
+                        </span>
+                    </b-button>
+                  </div>
+                  <div class="role">
+                    {{ experience.role }}
+                  </div>
+                  <ul class="bullets">
+                    <li class="bullet" :class="{ highlight: highlightedText(bullet.text)}" v-for="bullet in experience.bullets" :key="bullet.text">
+                      <font-awesome-icon class="bullet-icon" size="xs" icon="dot-circle" fill="blue" />
+                      <p class="bullet-text">{{ bullet.text }}</p>
+                    </li>
+                  </ul>
+                  <section class="tags">
+                    <b-badge
+                      class="tag"
+                      :class="{ highlight: highlightedText(tag)}"
+                      variant="primary"
+                      v-for="tag in experience.tags"
+                      @click="tagClick(tag)"
+                      :key="tag">
+                      {{ tag }}
+                    </b-badge>
+                  </section>
+                </b-card>
+              </section>
             </section>
           </b-col>
       </b-row>
@@ -99,7 +131,7 @@
 </template>
 
 <script>
-import { education, experiences, skills } from '@/data/resume'
+import { education, experiences, volunteer } from '@/data/resume'
 const defaultExperienceColumnWidth = 8
 const defaultSkillsColumnWidth = 4
 
@@ -144,7 +176,8 @@ export default {
       this.redrawSkills()
     },
     tagClick (text) {
-      this.query = text;
+      if (text === this.query) this.query = ''
+      else this.query = text;
     },
     openPDF () {
       const pdfPath = '/resume.pdf';
@@ -200,6 +233,12 @@ export default {
         return someOf(Object.values(ed), this.query)
       })
     },
+    filteredVolunteer () {
+      if (this.query === '') return volunteer
+      return volunteer.filter(v => {
+        return someOf(Object.values(v), this.query)
+      })
+    },
     filteredExperiences () {
       if (this.query === '') return experiences
       return experiences.filter(experience => {
@@ -222,7 +261,6 @@ export default {
         skills: false
       },
       query: '',
-      // experiences: resumeData.experiences,
       dateRange: {}
     }
   }
@@ -233,6 +271,7 @@ export default {
 
 .resume-thumb {
   max-width: 100%;
+  cursor: pointer;
 }
 .highlight {
   // background-color: #caf0f3;
@@ -276,6 +315,7 @@ export default {
           padding: 3px 5px;
           text-align: left;
           max-width: 60%;
+          font-weight: bold;
 
           .year-button {
           }
@@ -295,6 +335,7 @@ export default {
       .role {
         display: flex;
         justify-content: flex-start;
+        font-weight: bold;
       }
 
       .bullets {

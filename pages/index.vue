@@ -26,7 +26,7 @@
 
           <p>Listen to my <a
               href="http://therabbithole.libsyn.com/102-digging-into-javascript-w-jonathan-wexler">podcast
-              interview on Node.js</a> with The Rabbit Hole.
+              interview on Node.js</a> with The Rabbit Hole. Watch my <a href="https://www.twitch.tv/videos/808195944">Twitch livestream on Node.js</a>, hosted by Manning Publications.
           </p>
           </section>
         </b-col>
