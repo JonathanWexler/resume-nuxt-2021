@@ -11,12 +11,23 @@
     <div class="role">
       {{ experience.role }}
     </div>
-    <ul class="bullets">
-      <li class="bullet" :class="{ highlight: highlightedText(bullet.text)}" v-for="bullet in experience.bullets" :key="bullet.text">
-        <font-awesome-icon class="bullet-icon" size="xs" icon="dot-circle" fill="blue" />
-        <p class="bullet-text">{{ bullet.text }}</p>
-      </li>
-    </ul>
+    <!-- <b-collapse :id="itemSlug"> -->
+      <ul class="bullets">
+          <li class="bullet" :class="{ highlight: highlightedText(bullet.text)}" v-for="bullet in firstBullets" :key="bullet.text">
+            <font-awesome-icon class="bullet-icon" size="xs" icon="dot-circle" fill="blue" />
+            <p class="bullet-text">{{ bullet.text }}</p>
+          </li>
+          <span v-if="showBullets">
+            <li class="bullet" :class="{ highlight: highlightedText(bullet.text)}" v-for="bullet in restBullets" :key="bullet.text">
+              <font-awesome-icon class="bullet-icon" size="xs" icon="dot-circle" fill="blue" />
+              <p class="bullet-text">{{ bullet.text }}</p>
+            </li>
+          </span>
+      </ul>
+      <!-- </b-collapse> -->
+      <div class="view-more" v-if="restBullets.length" @click.capture="toggleShowMore">
+        {{ showMoreText }}
+      </div>
     <section class="tags">
       <b-badge
         class="tag"
@@ -39,7 +50,33 @@ export default {
       default: {}
     }
   },
+  data () {
+    return {
+      showBullets: false
+    }
+  },
+  computed: {
+    firstBullets () {
+      return this.experience.bullets.slice(0,2)
+    },
+    restBullets () {
+      return this.experience.bullets.slice(2)
+    },
+    showMoreText () {
+      let showHide = this.showBullets ? 'Less' : 'More'
+      return `Show ${showHide}`
+    },
+    itemSlug() {
+      return this.slugify(this.experience.company);
+    }
+  },
   methods: {
+    toggleShowMore () {
+      this.showBullets = !this.showBullets;
+    },
+    slugify (text) {
+      return (text || '').toLowerCase().split(' ').join('-')
+    },
     filterYears (experience) {
       this.$emit('filter-years', experience)
     },
@@ -116,6 +153,24 @@ export default {
         display: inline-flex;
         margin-bottom: 0.5rem;
       }
+    }
+  }
+
+  .view-more {
+    width: fit-content;
+    display: flex;
+    border: 1px solid;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer;
+    margin-left: 20px;
+    border-color: #ebfafd;
+    background-color: #ebfafd;
+    &:hover {
+      border-color: #ebfafd;
+      background-color: white;
     }
   }
 </style>
