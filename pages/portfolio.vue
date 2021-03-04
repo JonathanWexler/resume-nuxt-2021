@@ -9,39 +9,13 @@
             <font-awesome-icon class="expand" :icon="expandIcon" @click="toggleSection('experience')"/>
             <section class="experiences" v-if="filteredExperiences.length">
               <h1>Experience</h1>
-              <b-card class="experience" v-for="experience in filteredExperiences" :key="experience.title">
-                <div class="header">
-                  <span class="company">{{ experience.company }}</span>
-                  <b-button
-                    :variant="yearButtonType(experience)"
-                    @click="filterYears(experience)"
-                    class="border-0">
-                    <span class="year" @click="dateRangeSelect(experience.startDate, experience.endDate)">
-                      {{ `${experience.startDate} - ${experience.endDate || 'Present'}` }}
-                      </span>
-                  </b-button>
-                </div>
-                <div class="role">
-                  {{ experience.role }}
-                </div>
-                <ul class="bullets">
-                  <li class="bullet" :class="{ highlight: highlightedText(bullet.text)}" v-for="bullet in experience.bullets" :key="bullet.text">
-                    <font-awesome-icon class="bullet-icon" size="xs" icon="dot-circle" fill="blue" />
-                    <p class="bullet-text">{{ bullet.text }}</p>
-                  </li>
-                </ul>
-                <section class="tags">
-                  <b-badge
-                    class="tag"
-                    :class="{ highlight: highlightedText(tag)}"
-                    variant="primary"
-                    v-for="tag in experience.tags"
-                    @click="tagClick(tag)"
-                    :key="tag">
-                    {{ tag }}
-                  </b-badge>
-                </section>
-              </b-card>
+                <resume-item class="experience"
+                  v-for="experience in filteredExperiences"
+                  :key="experience.title"
+                  :experience="experience"
+                  @tag-click="tagClick"
+                  @date-range="dateRangeSelect"
+                  @filter-years="filterYears"/>
             </section>
           </b-col>
           <b-col sm="12" :md="skillsCol" id="skills" class="section skills-section" v-if="!this.collapseSection.skills">
@@ -49,36 +23,13 @@
             <section v-if="filteredEducation.length">
               <h1>Education</h1>
               <section class="experiences">
-                <b-card class="experience" v-for="experience in filteredEducation" :key="experience.title">
-                  <div class="header">
-                    <span class="company">{{ experience.company }}</span>
-                    <b-button variant="outline-primary" @click="filterYears(experience)" class="border-0">
-                      <span class="year" @click="dateRangeSelect(experience.startDate, experience.endDate)">
-                        {{ `${experience.startDate} - ${experience.endDate || 'Present'}` }}
-                        </span>
-                    </b-button>
-                  </div>
-                  <div class="role">
-                    {{ experience.role }}
-                  </div>
-                  <ul class="bullets">
-                    <li class="bullet" :class="{ highlight: highlightedText(bullet.text)}" v-for="bullet in experience.bullets" :key="bullet.text">
-                      <font-awesome-icon class="bullet-icon" size="xs" icon="dot-circle" fill="blue" />
-                      <p class="bullet-text">{{ bullet.text }}</p>
-                    </li>
-                  </ul>
-                  <section class="tags">
-                    <b-badge
-                      class="tag"
-                      :class="{ highlight: highlightedText(tag)}"
-                      variant="primary"
-                      v-for="tag in experience.tags"
-                      @click="tagClick(tag)"
-                      :key="tag">
-                      {{ tag }}
-                    </b-badge>
-                  </section>
-                </b-card>
+                <resume-item class="experience"
+                    v-for="experience in filteredEducation"
+                    :key="experience.title"
+                    :experience="experience"
+                    @tag-click="tagClick"
+                    @date-range="dateRangeSelect"
+                    @filter-years="filterYears"/>
               </section>
             </section>
             <section>
@@ -92,36 +43,13 @@
             <section v-if="filteredVolunteer.length">
               <h1>Giving Back</h1>
               <section class="experiences">
-                <b-card class="experience" v-for="experience in filteredVolunteer" :key="experience.title">
-                  <div class="header">
-                    <span class="company">{{ experience.company }}</span>
-                    <b-button variant="outline-primary" @click="filterYears(experience)" class="border-0">
-                      <span class="year" @click="dateRangeSelect(experience.startDate, experience.endDate)">
-                        {{ `${experience.startDate} - ${experience.endDate || 'Present'}` }}
-                        </span>
-                    </b-button>
-                  </div>
-                  <div class="role">
-                    {{ experience.role }}
-                  </div>
-                  <ul class="bullets">
-                    <li class="bullet" :class="{ highlight: highlightedText(bullet.text)}" v-for="bullet in experience.bullets" :key="bullet.text">
-                      <font-awesome-icon class="bullet-icon" size="xs" icon="dot-circle" fill="blue" />
-                      <p class="bullet-text">{{ bullet.text }}</p>
-                    </li>
-                  </ul>
-                  <section class="tags">
-                    <b-badge
-                      class="tag"
-                      :class="{ highlight: highlightedText(tag)}"
-                      variant="primary"
-                      v-for="tag in experience.tags"
-                      @click="tagClick(tag)"
-                      :key="tag">
-                      {{ tag }}
-                    </b-badge>
-                  </section>
-                </b-card>
+                <resume-item class="experience"
+                  v-for="experience in filteredVolunteer"
+                  :key="experience.title"
+                  :experience="experience"
+                  @tag-click="tagClick"
+                  @date-range="dateRangeSelect"
+                  @filter-years="filterYears"/>
               </section>
             </section>
           </b-col>
@@ -162,7 +90,7 @@ export default {
                       && end === parseInt(experience.endDate || currentDate)
       return isSelected
     },
-    dateRangeSelect (start, end) {
+    dateRangeSelect ({start, end}) {
       if (this.yearSelected({startDate: start, endDate: end})) this.dateRange = {}
       else {
         end = parseInt(end) || currentDate
@@ -273,11 +201,6 @@ export default {
   max-width: 100%;
   cursor: pointer;
 }
-.highlight {
-  // background-color: #caf0f3;
-  background-color: #ffd400;
-  color: #21262a;
-}
 
 #skills {
     font-family: "SignikaNegative-Light";
@@ -299,71 +222,7 @@ export default {
     }
   }
 
-  .section {
-    width: 100%;
-    padding: 0;
-        .experience {
-      border: none;
 
-      .header {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-
-        .company {
-          background-color: #ebfbfd;
-          padding: 3px 5px;
-          text-align: left;
-          max-width: 60%;
-          font-weight: bold;
-
-          .year-button {
-          }
-        }
-      }
-
-      .tags {
-        text-align: left;
-
-        .tag {
-          padding: 5px;
-          margin-right: 5px;
-          cursor: pointer;
-        }
-      }
-
-      .role {
-        display: flex;
-        justify-content: flex-start;
-        font-weight: bold;
-      }
-
-      .bullets {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        padding-left: 20px;
-
-        .bullet {
-          display: flex;
-          flex-direction: row;
-          justify-content: flex-start;
-          text-align: left;
-          width: 80%;
-
-          .bullet-icon {
-            display: inline-flex;
-            margin-right: 10px;
-            margin-top: 6px;
-          }
-          .bullet-text {
-            display: inline-flex;
-            margin-bottom: 0.5rem;
-          }
-        }
-      }
-    }
-  }
 }
 .main {
   width: 100%;
@@ -371,6 +230,14 @@ export default {
   .resume {
   }
 }
+
+  .section {
+    width: 100%;
+    padding: 0;
+    .experience {
+      border: none;
+    }
+  }
 
 .container {
   margin: 0 auto;
@@ -406,10 +273,6 @@ export default {
   color: #526488;
   word-spacing: 5px;
   padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
 }
 
 .expand {

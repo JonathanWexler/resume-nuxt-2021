@@ -69,7 +69,7 @@ export default {
       },
       filteredLabels () {
           let [start, end] = this.filteredIndices
-          if (!start || !end) return this.labels
+          if (start === undefined || end === undefined) return this.labels
           return this.labels.slice(start, end+1)
       },
       filteredLanguageData () {
