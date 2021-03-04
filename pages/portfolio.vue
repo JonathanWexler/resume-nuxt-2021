@@ -13,6 +13,7 @@
                   v-for="experience in filteredExperiences"
                   :key="experience.title"
                   :experience="experience"
+                  :query="query"
                   @tag-click="tagClick"
                   @date-range="dateRangeSelect"
                   @filter-years="filterYears"/>
@@ -27,6 +28,7 @@
                     v-for="experience in filteredEducation"
                     :key="experience.title"
                     :experience="experience"
+                    :query="query"
                     @tag-click="tagClick"
                     @date-range="dateRangeSelect"
                     @filter-years="filterYears"/>
@@ -47,6 +49,7 @@
                   v-for="experience in filteredVolunteer"
                   :key="experience.title"
                   :experience="experience"
+                  :query="query"
                   @tag-click="tagClick"
                   @date-range="dateRangeSelect"
                   @filter-years="filterYears"/>
@@ -115,9 +118,6 @@ export default {
       if (!experience) this.filters.years = null
       let {startDate, endDate} = experience
       this.filters.years = range(parseInt(endDate || 2020) - parseInt(startDate) + 1, parseInt(startDate))
-    },
-    highlightedText (text) {
-      return this.query.trim() !== '' && text.toLowerCase().includes(this.query)
     },
     checkCols () {
       if (this.collapseSection['skills']) {

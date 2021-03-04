@@ -17,7 +17,7 @@
             <font-awesome-icon class="bullet-icon" size="xs" icon="dot-circle" fill="blue" />
             <p class="bullet-text">{{ bullet.text }}</p>
           </li>
-          <span v-if="showBullets">
+          <span v-show="showBullets">
             <li class="bullet" :class="{ highlight: highlightedText(bullet.text)}" v-for="bullet in restBullets" :key="bullet.text">
               <font-awesome-icon class="bullet-icon" size="xs" icon="dot-circle" fill="blue" />
               <p class="bullet-text">{{ bullet.text }}</p>
@@ -48,11 +48,20 @@ export default {
     experience: {
       type: Object,
       default: {}
+    },
+    query: {
+      type: String,
+      default: ''
     }
   },
   data () {
     return {
       showBullets: false
+    }
+  },
+  watch: {
+    query (newQ) {
+      if (newQ === '') this.showBullets = false
     }
   },
   computed: {
@@ -84,7 +93,9 @@ export default {
       this.$emit('date-range', { start, end })
     },
     highlightedText (text) {
-      this.$emit('query-text', text)
+      let isHighlighted = this.query.trim() !== '' && text.toLowerCase().includes(this.query)
+      if (isHighlighted) this.showBullets = true
+      return isHighlighted
     },
     tagClick (tag){
       this.$emit('tag-click', tag)
@@ -112,6 +123,10 @@ export default {
 
   .tags {
     text-align: left;
+    .highlight {
+      background-color: #ffd400;
+      color: #21262a;
+    }
 
     .tag {
       padding: 5px;
