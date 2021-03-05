@@ -214,7 +214,7 @@ export default {
   color: #343a40;
 
   .experience-section {
-    width: 60%;
+    width: 100%;
     border-right: 1px solid #cfcfd0;
 
     &.expanded {
