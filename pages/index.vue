@@ -20,7 +20,7 @@
             developers and bridge the gap between the technical and non-technical groups in a company. My
             world revolves around technology, creativity, innovation, and exploration.</p>
 
-          <p>I'm currently a senior engineer at Bloomberg LP, lead developer at Logorithms LLC, and author of
+          <p>I'm currently a senior engineer at Meta Platforms, lead developer at Logorithms LLC, and author of
             <a href="https://www.manning.com/books/get-programming-with-node-js">Get Programming with
               Node.js</a>, through Manning Publications.</p>
 

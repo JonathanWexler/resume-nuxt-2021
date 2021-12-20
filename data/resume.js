@@ -1,5 +1,22 @@
 export const experiences = [
   {
+    company: 'Meta/Facebook',
+    role: 'Senior Software Engineer',
+    bullets: [
+      {
+        text: `Build backend solutions for Facebook Messenger and Instagram.`
+      },
+      {
+        text: `Lead new architecture on projects enabling small and medium businesses to interact with their customers. `
+      },
+    ],
+    startDate: '2021',
+    endDate: null,
+    tags: [
+      'php', 'node.js', 'javascript', 'html', 'css', `web development`, 'java', 'python', 'queues'
+    ]
+  },
+  {
     company: 'Bloomberg LP',
     role: 'Senior Software Engineer',
     bullets: [
@@ -17,7 +34,7 @@ export const experiences = [
       },
     ],
     startDate: '2017',
-    endDate: null,
+    endDate: '2021',
     tags: [
       'ruby', 'ruby on rails', 'node.js', 'vue.js', 'polymer.js', 'jupyter notebook', 'javascript', 'html', 'css', `web development`, 'teaching', 'java', 'python', 'scikit-learn', 'kafka'
     ]
