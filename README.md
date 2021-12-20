@@ -23,6 +23,8 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 - add and save new dist, then
 - run `git subtree push --prefix dist origin gh-pages`
 
+- push to origin and githiub `git push github master`
+
 git checkout master # you can avoid this line if you are in master...
 git subtree split --prefix dist -b gh-pages # create a local gh-pages branch containing the splitted output folder
 git push -f origin gh-pages:gh-pages # force the push of the gh-pages branch to the remote gh-pages branch at origin
