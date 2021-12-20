@@ -5,13 +5,14 @@ export default {
   ** See https://nuxtjs.org/api/configuration-mode
   */
   mode: 'spa',
+  babel: { compact: true },
   /*
   ** Nuxt target
   ** See https://nuxtjs.org/api/configuration-target
   */
   target: 'static',
   router: {
-    base: '/'
+    base: ''
   },
   /*
   ** Headers of the page
