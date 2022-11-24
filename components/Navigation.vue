@@ -10,91 +10,95 @@
               size="lg"
               ref="name"
               to="/"
-              exact>
-                Jon Wexler
+              exact
+            >
+              Jon Wexler
             </b-button>
           </b-col>
           <b-col sm="12" md="7" class="center">
             <b-button-group>
               <b-button
-              class="nav-button"
+                class="nav-button"
                 variant="light"
                 size="lg"
                 v-for="item in buttons"
                 :to="item.link"
                 exact
-                :key="item.label">
+                :key="item.label"
+              >
                 <font-awesome-icon :icon="item.icon" />
                 {{ item.label }}
               </b-button>
             </b-button-group>
           </b-col>
-      </b-row>
+        </b-row>
       </div>
     </nav>
   </div>
 </template>
 <script>
 export default {
-  name: 'Navigation',
+  name: "Navigation",
   methods: {
-    blink () {
-      let name = this.$refs.name
-      if (!name) return
-      name = name.$el
-      if (name.className.includes('blink')) name.className = name.className.replace('blink', '')
-      else name.className = name.className + ' blink'
+    blink() {
+      let name = this.$refs.name;
+      if (!name) return;
+      name = name.$el;
+      if (name.className.includes("blink"))
+        name.className = name.className.replace("blink", "");
+      else name.className = name.className + " blink";
     },
-    handleScroll (e) {
-      if (window.scrollY > 30) this.show = false
-      else this.show = true
-    }
+    handleScroll(e) {
+      if (window.scrollY > 30) this.show = false;
+      else this.show = true;
+    },
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       window.setInterval(() => {
-          this.blink();
+        this.blink();
       }, 1000);
-    })
-    window.addEventListener('scroll', this.handleScroll);
+    });
+    window.addEventListener("scroll", this.handleScroll);
   },
-  data () {
+  data() {
     return {
       show: true,
       buttons: [
         {
-          label: 'Portfolio',
-          link: '/portfolio',
-          icon: 'file-alt'
+          label: "Portfolio",
+          link: "/portfolio",
+          icon: "file-alt",
         },
         {
-          label: 'Book',
-          link: '/book',
-          icon: 'book'
+          label: "Books",
+          link: "/books",
+          icon: "book",
         },
         {
-          label: 'Photos',
-          link: '/photos',
-          icon: 'images'
+          label: "Photos",
+          link: "/photos",
+          icon: "images",
         },
         {
-          label: 'Contact',
-          link: '/contact',
-          icon: 'id-card'
+          label: "Contact",
+          link: "/contact",
+          icon: "id-card",
         },
-      ]
-    }
-  }
-}
+      ],
+    };
+  },
+};
 </script>
 <style lang="scss" scoped>
 .center {
   text-align: center;
   margin-bottom: 10px;
 }
-.btn:focus,.btn:active {
-   outline: none !important;
-   box-shadow: none;
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: none;
 }
 
 .Navigation {
@@ -127,22 +131,20 @@ export default {
   }
 }
 
-
 .name-card {
   font-family: "SignikaNegative-Light";
   width: 185px;
   font-size: 30px;
   background-color: #ebfcfd;
-  color: rgba(82, 82, 82, 0.50);
+  color: rgba(82, 82, 82, 0.5);
   text-align: left;
   border: none;
-  outline : none;
+  outline: none;
   height: 68px;
   border-right: 8px solid #caf0f3;
 
   &.blink {
-      border-right: 8px solid #ebfcfd;
+    border-right: 8px solid #ebfcfd;
   }
 }
-
 </style>
