@@ -38,8 +38,9 @@
             </p>
 
             <p>
-              I have experience as a senior engineer at Meta Platforms, lead
-              developer at Logorithms App Development, and author of
+              I have experience as a senior engineer at Meta Platforms and
+              Bloomberg LP, lead developer at Logorithms App Development, and
+              author of
               <a
                 href="https://www.manning.com/books/get-programming-with-node-js"
                 >Get Programming with Node.js</a
