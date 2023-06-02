@@ -1,5 +1,35 @@
 export const experiences = [
   {
+    company: "Soon Dating",
+    role: "Senior Software Engineer",
+    bullets: [
+      {
+        text: `Lead new feature initiatives and manage product releases`,
+      },
+      {
+        text: `Implement client-facing React Native APIs and client data consumption for iOS`,
+      },
+      {
+        text: `Manage product testing and coordinate app version releases to the app store`,
+      },
+      {
+        text: `Develop real-time push notification and support for dynamoDB and related backend tooling`,
+      },
+    ],
+    startDate: "2023",
+    endDate: null,
+    tags: [
+      "node.js",
+      "javascript",
+      "html",
+      "css",
+      `web development`,
+      "react",
+      "react native",
+      "dynamodb",
+    ],
+  },
+  {
     company: "Meta/Facebook",
     role: "Senior Software Engineer",
     bullets: [
@@ -17,7 +47,7 @@ export const experiences = [
       },
     ],
     startDate: "2021",
-    endDate: null,
+    endDate: "2023",
     tags: [
       "php",
       "node.js",
@@ -237,16 +267,6 @@ export const education = [
     ],
     startDate: "2010",
     endDate: "2013",
-  },
-  {
-    company: "Quantic School of Business and Technology",
-    bullets: [
-      {
-        text: `Master of Business Administration`,
-      },
-    ],
-    startDate: "2020",
-    endDate: null,
   },
 ];
 

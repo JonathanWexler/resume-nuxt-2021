@@ -6,21 +6,21 @@
           <img
             v-if="hovered"
             class="main-image"
-            src="~/assets/profile_gif_color.gif"
+            src="~/assets/2023_profile.gif"
             alt=""
             @mouseout="changeHover(false)"
           />
           <img
             v-else
             class="main-image image"
-            src="~/assets/profile.jpg"
+            src="~/assets/2023_profile.jpg"
             alt=""
             @mouseover="changeHover(true)"
           />
         </b-col>
         <b-col cols="12" xs="12" sm="12" md="6">
           <section id="main-text">
-            <p>Hi, I'm Jon. Take a seat.</p>
+            <p>Hi, I'm Jon.</p>
             <p>
               I'm a software engineer specializing in web development and
               teaching application development concepts. I have instructed
