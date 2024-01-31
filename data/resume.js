@@ -1,5 +1,17 @@
 export const experiences = [
   {
+    company: "Meta",
+    role: "Senior Software Engineer",
+    bullets: [
+      {
+        text: `Develop tools for AI integrations in Facebook Reality Labs`,
+      },
+    ],
+    startDate: "2024",
+    endDate: null,
+    tags: ["php", "javascript", "html", "css", `VR`, "java", "android"],
+  },
+  {
     company: "Soon Dating",
     role: "Senior Software Engineer",
     bullets: [
@@ -17,7 +29,7 @@ export const experiences = [
       },
     ],
     startDate: "2023",
-    endDate: null,
+    endDate: "2023",
     tags: [
       "node.js",
       "javascript",
@@ -157,7 +169,7 @@ export const experiences = [
     ],
   },
   {
-    company: "Logorithms Design",
+    company: "Hack Apps",
     role: "Founder/Designer",
     bullets: [
       {
