@@ -6,7 +6,7 @@
     "dev": "nuxt --openssl-legacy-provider",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate",
+    "generate": "nuxt generate && cp CNAME ./dist/",
     "deploy": "gh-pages -d dist -t true"
   },
   "dependencies": {
