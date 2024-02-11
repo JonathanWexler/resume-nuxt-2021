@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nuxt --openssl-legacy-provider",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -17,6 +17,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.10",
     "bootstrap": "^4.5.0",
     "bootstrap-vue": "^2.15.0",
+    "crypto-js": "^4.2.0",
     "frappe-charts": "^1.5.2",
     "nuxt": "^2.15.8",
     "sass": "^1.56.1",
