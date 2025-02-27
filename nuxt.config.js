@@ -12,6 +12,9 @@ export default {
   router: {
     base: "/",
   },
+  serverMiddleware: [
+    { path: "/api/rss", handler: "~/server/api/rss.js" }, // Proxy RSS API
+  ],
   /*
    ** Headers of the page
    ** See https://nuxtjs.org/api/configuration-head
