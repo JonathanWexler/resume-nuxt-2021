@@ -3,7 +3,7 @@
     <nav class="row nav-container">
       <div>
         <b-row class="center no-gutters" align-h="center">
-          <b-col sm="12" md="5" class="center">
+          <b-col sm="12" md="3" class="center">
             <b-button
               class="name-card"
               variant="light"
@@ -15,7 +15,7 @@
               Jon Wexler
             </b-button>
           </b-col>
-          <b-col sm="12" md="7" class="center">
+          <b-col sm="12" md="9" class="center">
             <b-button-group>
               <b-button
                 class="nav-button"
@@ -48,7 +48,7 @@ export default {
         name.className = name.className.replace("blink", "");
       else name.className = name.className + " blink";
     },
-    handleScroll(e) {
+    handleScroll(_e) {
       if (window.scrollY > 30) this.show = false;
       else this.show = true;
     },
@@ -79,6 +79,11 @@ export default {
           label: "Photos",
           link: "/photos",
           icon: "images",
+        },
+        {
+          label: "Articles",
+          link: "/articles",
+          icon: "newspaper",
         },
         {
           label: "Contact",

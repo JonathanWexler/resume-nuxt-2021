@@ -1,6 +1,59 @@
 <template>
   <div class="container">
     <b-card class="main">
+      <b-row class="book3">
+        <b-col class="col" cols="12" md="5">
+          <a
+            href="https://www.oreilly.com/library/view/nodejs-projects/9781098173135/"
+            target="_blank"
+          >
+            <img
+              class="book-image"
+              src="https://i.imgur.com/ZlCTWeX.png"
+              alt=""
+            />
+          </a>
+        </b-col>
+        <b-col class="col" cols="12" md="7">
+          <h1>Node Projects</h1>
+          <section class="book-text">
+            <p>
+              Ready to take your Node.js skills to the next level? If you've
+              grasped the basics, you're probably ready for more complex
+              real-world applications that will distinguish you in today's
+              competitive job market. But traditional learning resources often
+              lack the depth and practical application you need to truly excel.
+              This book offers a solution.
+            </p>
+          </section>
+          <section class="highlights">
+            <ul>
+              <li>Publication in Summer 2025</li>
+            </ul>
+          </section>
+          <section class="book-quotes"></section>
+          <ul class="links">
+            <li>
+              <a
+                href="https://github.com/JonathanWexler/oreilly-node-projects-code"
+                target="_blank"
+              >
+                <font-awesome-icon size="2x" :icon="['fab', 'github']" />
+                View code on Github
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.oreilly.com/library/view/nodejs-projects/9781098173135/"
+                target="_blank"
+              >
+                <font-awesome-icon size="2x" icon="book-open" />
+                View at O'Reilly
+              </a>
+            </li>
+          </ul>
+        </b-col>
+      </b-row>
       <b-row class="book2">
         <b-col class="col" cols="12" md="5">
           <a
